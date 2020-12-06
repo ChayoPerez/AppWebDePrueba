@@ -17,7 +17,7 @@ router.param("id", async (id, ctx, next) => {
     return next();
   });
   
-  router.get("organizations", "/", async (ctx) => {
+router.get("organizations", "/", async (ctx) => {
 
     //const { cloudinary } = ctx.state;
     //const organization = ctx.state.currentOrganization;
@@ -31,7 +31,7 @@ router.param("id", async (id, ctx, next) => {
     });
   });
   
-  router.get("organizations-new", "/new", async (ctx) => {
+  router.get("organizations-new", "/organizations/new", async (ctx) => {
     const organization = ctx.orm.organization.build();
     return ctx.render("organizations/new", {
       organization,
@@ -59,10 +59,12 @@ router.param("id", async (id, ctx, next) => {
     }
   });
 
-  router.get("organization", "/:id", async (ctx) => {
+  router.get("organization-show", "organization/:id", async (ctx) => {
     // await ctx.orm.like.destroy({where: {}}).then(function () {});
     const organization = await ctx.orm.organization.findByPk(id);
     return ctx.render("organizations/show", {
       organization,
     });
   });
+
+module.exports = router;
