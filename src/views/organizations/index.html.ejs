@@ -1,1 +1,9 @@
 <h1>Menú de organizaciones:</h1>
+
+<% organizations.forEach(organization => { %>
+    <%= organization.name %>
+    <br>
+    <img src="<%= organization.url %>">
+    <br><br>
+<% }); %>
+

@@ -1,13 +1,13 @@
-<form method="post" action="<%= submitRecipePath %>" enctype="multipart/form-data" novalidate>
-    <div class="recipe-field">
+<form method="post" action="<%= createOrgPath %>" enctype="multipart/form-data" novalidate>
+    <div class="organization-field">
       <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" value="<%= recipe.name %>" />
+      <input type="text" id="name" name="name" />
     </div>
-    <div class="recipe-field">
-      <label for="image">Foto</label>
-      <input type="file" accept="image/*" id="image" name="image" value="<%= recipe.image %>" />
+    <div class="organization-field">
+      <label for="url">URL imagen</label>
+      <input type="text" id="url" name="url" />
     </div>
     <div class="actions">
-      <input class="recipe-submit" type="submit" name="create" value="Crear organización" />
+      <input class="organization-submit" type="submit" name="create" />
     </div>
   </form>
