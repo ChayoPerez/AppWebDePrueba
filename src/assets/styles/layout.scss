@@ -2,3 +2,106 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+// width percentage is the percentage of the screen the img uses
+.bunnies {
+  width: 15%;
+  //display: inline; //Todos en filita
+  //display: block; //Se apilan para abajo
+  display: inline-block;
+  border: solid black;
+
+  // Compared to display: inline, the major difference is that display: inline-block
+  // allows to set a width and height on the element.
+  // Also, with display: inline-block, the top and bottom margins/paddings 
+  // are respected, but with display: inline they are not.
+}
+
+.bunnies2 {
+  width: 50%;
+  display: inline-block;
+  border: solid black;
+}
+
+
+.box {
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  border: solid black;
+  margin: 20px;
+  //display: inline; // does not read size
+  display: inline-block;
+}
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;  // Can be 'column'
+  justify-content: space-between;
+  padding: 20px;
+  align-items: flex-end;
+  border: solid black;
+}
+
+.flex-item1 {
+  flex:1;
+  border: solid black;
+  padding:20px;
+  margin: 10px;
+}
+
+.flex-item2 {
+  flex:2;
+  border: solid black;
+  padding:20px;
+  margin: 10px;
+}
+
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+
+.floating-right {
+  float:right;
+}
+
+.floating-left {
+  float: left;
+}
+
+
+.positioning-static {
+  position: static;
+}
+
+.positioning-relative {
+  position: relative;
+}
+
+.positioning-absolute {
+  position: absolute;
+}
+
+.positioning-fixed {
+  position: fixed;
+}
+
+.positioning-sticky {
+  position: sticky;
+}

@@ -3,3 +3,148 @@
 <br>
 <img src="<%= organization.url %>">
 <br><br>
+
+
+<!--
+
+WITHOUT HANDLERS
+
+-->
+
+
+<div><h2>Butón para activar cambios</h2></div>
+<div>Cambia su nombre con getElementById</div>
+<button id="button1" onclick="func()">Hola</button>
+<br><br><br>
+
+<div>Escribe un elemento abajo con getElementsByTagName</div>
+<ul>
+    <li>Elemento1</li>
+    <li>Elemento2</li>
+    <li>Elemento3</li>
+</ul>
+<div id="elementos"></div>
+
+<br><br><br>
+
+<div>Escribe ambas líneas con querySelectorAll</div>
+<div class="example-class">ExampleClass1</div>
+<div class="example-class">ExampleClass2</div>
+<br>
+<div id="examples"></div>
+
+<br><br><br>
+
+<div>El boton crea un elemento en un dive preexistente, que comparte sus propiedades (style)</div>
+<button onclick="func2()">Crear elemento</button>
+<br><br>
+<div id="parent-element" style="color:red"></div>
+<br><br>
+<div>El boton borra un elemento</div>
+<button onclick="func3()">Eliminar elemento</button>
+<br><br><br><br>
+
+
+
+<script>
+
+    function func() {
+        document.getElementById("button1").innerHTML = "Button";
+    
+        const liElement = document.getElementsByTagName("LI")[0].textContent;
+        document.getElementById("elementos").innerHTML = liElement;
+    
+        const exampleClassList = document.querySelectorAll(".example-class");
+        let text = ""; 
+        exampleClassList.forEach(example => {
+            text = text + example.textContent + " ";
+        });
+        document.getElementById("examples").innerHTML = text;
+        const examples = document.getElementById("examples");
+        examples.style.color = "blue";
+    }
+    
+    function func2() {
+        const element = document.getElementById("parent-element");
+        const newElement = document.createElement("li");
+        // No funciona:
+        // newElement.textContent = "<div><em>Nuevo elemento creado en función!</em></div>";
+        newElement.textContent = "Nuevo elemento creado en función!";
+        newElement.setAttribute("id", "that-one-element");
+        element.appendChild(newElement);
+    }
+    
+    function func3() {
+        const element = document.getElementById("parent-element");
+        const newElement = document.getElementById("that-one-element");
+        element.removeChild(newElement);
+        newElement.remove();
+    }
+    
+    </script>
+
+<h1>USING HANLDERS</h1>
+<!--Es más classy que meterlo en el HTML como arriba-->
+
+
+<!--
+
+USING HANDLERS
+
+-->
+
+<button id="handled1">Can you handle me?</button>
+<div id="handle-message"></div>
+
+<br><br><br>
+
+
+<script>
+
+function handlerFunction1() {
+    const x = document.getElementById("handle-message");
+    x.innerHTML = "Yes I can!";
+}
+
+const handledElement = document.getElementById("handled1");
+handledElement.onclick = handlerFunction1;
+
+</script>
+
+
+<!--
+
+LISTENERS
+
+-->
+<h1>USING LISTENERS</h1>
+
+<br>
+<img id="bunny" class="bunnies" src="<%= assetPath('bunny1.jpg') %>">
+<br><br><br>
+
+
+<script>
+
+const image = document.getElementById("bunny");
+
+image.addEventListener('click', function(x) {
+    image.style.border = "solid red";
+});
+
+image.addEventListener('mouseover', function(x) {
+    image.style.border = "solid green";
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
