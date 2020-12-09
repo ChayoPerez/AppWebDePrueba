@@ -40,7 +40,8 @@ router.get("organizations", "/", async (ctx) => {
     });
   });
   
- 
+ // Para no permitir la creacion
+ // router.post("organizations-create", "/", checkAuth, async (ctx) => {
   router.post("organizations-create", "/", async (ctx) => {
     const organization = ctx.orm.organization.build(ctx.request.body);
     try {
@@ -62,6 +63,26 @@ router.get("organizations", "/", async (ctx) => {
       organization,
     });
   });
+
+// Si se cambia el boolean, se puede volver
+// a no autorizar la creación de orgnizaciones
+// También hay que volver a habilitar el auth
+// en la función de arriba (create)
+function checkAuth(ctx, next) {
+  if (true) {
+    ctx.throw(401);
+  }
+  return next();
+}
+
+// ALTERNATIVAMENTE
+// no funciona lmao
+const PROTECTED_PATHS = [
+  '/new',
+  '/:id',
+];
+
+router.use(PROTECTED_PATHS,checkAuth);
 
 
 module.exports = router;

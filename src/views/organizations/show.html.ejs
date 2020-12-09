@@ -1,3 +1,10 @@
+<!--PARA DISPOSITIVOS MOVILES-->
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+/>
+
+
 <h1>Organización:</h1>
 <%= organization.name %>
 <br>
@@ -117,10 +124,27 @@ handledElement.onclick = handlerFunction1;
 LISTENERS
 
 -->
+
+<style>
+
+@media screen and (min-width: 1000px) {
+    #bunny {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 999px) {
+    #bunny {
+        width: 300px;
+    }
+}
+
+</style>
+
 <h1>USING LISTENERS</h1>
 
 <br>
-<img id="bunny" class="bunnies" src="<%= assetPath('bunny1.jpg') %>">
+<img id="bunny" src="<%= assetPath('bunny1.jpg') %>">
 <br><br><br>
 
 
@@ -139,12 +163,292 @@ image.addEventListener('mouseover', function(x) {
 </script>
 
 
+<br><br><br><br><br>
+
+<h1>USING REACT</h1>
+
+<div id="root1">This is a root.
+</div>
+<br><br>
+<div id="root2">This is a root.
+</div>
+<br><br>
+<div id="root3">This is a root.
+</div>
+<br><br><br>
 
 
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js" ></script>
+<script type="text/babel">
+
+const rootNode1 = document.getElementById("root1");
+ReactDOM.render(<div>Esto fue agregado con REACT</div>, rootNode1);
+
+// funcional:
+
+function FunctionComponent(props) {
+    return (
+        <ul>
+            <li>Figs</li>
+            <li>Oranges</li>
+            <li>Bananas</li>
+        </ul>
+    );
+}
+
+ReactDOM.render(<FunctionComponent/>, root2);
+
+class ClassComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <button>This is a random button</button>
+        );
+    }
+}
+
+ReactDOM.render(<ClassComponent/>, root3);
+
+</script>
+
+<h3>Real example of React working</h3>
+<div id="real-root">Hello this shouldn't show</div>
+<br><br><br>
+
+<script type="text/babel">
+
+const INITIAL_STATE = [
+    {
+        albumId: 1,
+        id: 1,
+        title: "accusamus beatae ad facilis cum similique qui sunt",
+        url: "https://via.placeholder.com/600/92c952",
+        thumbnailUrl: "https://via.placeholder.com/150/92c952",
+    },
+    {
+        albumId: 1,
+        id: 2,
+        title: "reprehenderit est deserunt velit ipsam",
+        url: "https://via.placeholder.com/600/771796",
+        thumbnailUrl: "https://via.placeholder.com/150/771796",
+    },
+    {
+        albumId: 1,
+        id: 3,
+        title: "officia porro iure quia iusto qui ipsa ut modi",
+        url: "https://via.placeholder.com/600/24f355",
+        thumbnailUrl: "https://via.placeholder.com/150/24f355",
+    },
+    ];
+
+function Photos(props) {
+    const photos = props.photos;
+    console.log(photos);
+    return (
+        <div>
+            <h3>React Photos</h3>
+            <Button />
+            <ul className="photos">
+                {photos.map((photo) => (
+                    <SinglePhoto key={photo.id} photo={photo}/>
+                ))}
+            </ul>
+        </div>
+     );
+}
 
 
+function Button(props) {
+    return (
+        <button>Random Button</button>
+    );
+}
+
+function SinglePhoto(props) {
+    const {photo} = props;
+    return (
+        <li className="photo">
+            <h4>{photo.title}</h4>
+            <img src={photo.thumbnailUrl} />
+        </li>
+    );
+}
 
 
+const realNode = document.getElementById("real-root");
+ReactDOM.render(<Photos photos={INITIAL_STATE} />, realNode);
+
+</script>
 
 
+<br><br><br><br>
+<h1>CORRECT WAY TO USE REACT</h1>
+<!-- 
+Ahora como en verdad se hace el react
+En assets/js/app.jsx se hace el render
+En js/components/App.jsx hay código REACT de un texto
 
+
+-->
+
+
+<div id="react-app"></div>
+ 
+<br><br><br>
+
+<div id="react-photos"></div>
+ 
+<br><br><br>
+
+
+<!--
+
+HOOKS AND STUFF
+
+-->
+
+<h1>HOOKS AND STUFF</h1>
+<div id="hook1"></div>
+
+<script type="text/babel">
+
+function RandomFunction() {
+    const [text, setText] = React.useState("random_text");
+    //setText("random_text_2");
+    return (
+        <li>{text}!</li>
+    );
+}
+
+const hook1 = document.getElementById("hook1");
+ReactDOM.render(<RandomFunction />, hook1);
+
+</script>
+
+<br><br><br><br>
+
+
+<!--
+
+EJEMPLO clase-19-client-side-frameworks
+
+-->
+
+<h1>EXAMPLE</h1>
+
+<div id="example-root"></div>
+<br><br>
+<div id="example-message"></div>
+<br><br><br><br>
+
+<style>
+
+.centered {
+    width: 70%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 40px auto;
+}
+.publication {
+    border: 1px solid #5D5D5F;
+    padding: 25px;
+    height: 310px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.square {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 50px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+</style>
+
+
+<script type="text/babel">
+
+    function printOnScreen(text) {
+        const node = document.getElementById("example-message");
+        node.innerHTML = node.innerHTML + "<br>" + text;
+    }
+
+    function LifecycleExample(props) {
+      const [showPublication, setShowPublication] = React.useState(false);
+
+      const handleShowPublication = () => {
+        setShowPublication((publication) => setShowPublication(!publication));
+      };
+
+      return (
+        <div>
+          <input
+            id="check-publication"
+            type="checkbox"
+            onChange={handleShowPublication}
+          />
+          <label for="check-publication">{showPublication ? 'Unmount' : 'Mount'} publication</label>
+          {showPublication && <Publication />}
+        </div>
+      );
+    }
+
+    function Publication(props) {
+      const [content, setContent] = React.useState('');
+      const LIKED_CONTENT = '♥️';
+
+      React.useEffect(() => {
+        console.log('Publication: after render');
+        return () => printOnScreen('Publication: cleanup after render');
+      });
+
+      React.useEffect(() => {
+        printOnScreen('Publication: mounted');
+        
+        return () => {
+            printOnScreen('Publication: unmounted');
+        };
+      }, []);
+
+      React.useEffect(() => {
+        printOnScreen('Publication: updated content');
+        return () => {
+            printOnScreen('Publication: cleanup content');
+        };
+      }, [content]);
+
+      const handleClick = () => {
+        setContent((content) => content ? '' : LIKED_CONTENT);
+      };
+
+      return (
+        <div class="publication">
+          <div class="square">{content}</div>
+          <Button
+            text={content ? 'Unlike' : 'Like'}
+            onClick={handleClick}
+          />
+        </div>
+      );
+    }
+
+    function Button(props) {
+      const { onClick, text } = props;
+      return (
+        <button onClick={onClick}>{text}</button>
+      );
+    }
+
+    const rootNode = document.getElementById('example-root');
+    ReactDOM.render(<LifecycleExample />, rootNode);
+
+  </script>
