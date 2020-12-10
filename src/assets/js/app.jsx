@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // Componente custom
 import App from './components/App';
 import PhotosX from './components/PhotosX';
+import ParamReact from './components/ParamReact';
 
 
 const reactAppContainer = document.getElementById('react-app');
@@ -41,5 +42,12 @@ const reactAppPhotoContainer = document.getElementById('react-photos');
 
 if (reactAppPhotoContainer) {
   ReactDOM.render(<PhotosX photos={INITIAL_STATE} />, reactAppPhotoContainer);
+}
+
+
+const reactAppParamContainer = document.getElementById('react-param');
+
+if (reactAppParamContainer) {
+  ReactDOM.render(<ParamReact />, reactAppParamContainer);
 }
 
