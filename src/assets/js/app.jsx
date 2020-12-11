@@ -48,6 +48,6 @@ if (reactAppPhotoContainer) {
 const reactAppParamContainer = document.getElementById('react-param');
 
 if (reactAppParamContainer) {
-  ReactDOM.render(<ParamReact />, reactAppParamContainer);
+  const data = reactAppParamContainer.dataset;
+  ReactDOM.render(<ParamReact data={data} />, reactAppParamContainer);
 }
-
